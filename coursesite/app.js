@@ -12,6 +12,9 @@ var home = require('./routes/home');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var expressSession = require('express-session');
+var flash = require('connect-flash');
+var MongoStore = require('connect-mongo')(expressSession);
+
 
 var config = require('./config');
 var passportConfig = require('./auth/passport-config');
@@ -39,8 +42,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({
 	secret: 'E5-571G-52B7',
 	saveUninitialized: false,
-	resave: false
+	resave: false,
+	store : new MongoStore({
+		mongooseConnection: mongoose.connection
+	})
 }));
+
+//initializa flash
+app.use(flash());
 
 //put it before routes - so that we can allow/disallow certain routes
 app.use(passport.initialize());

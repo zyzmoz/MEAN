@@ -1,5 +1,8 @@
-<div class="container">
+<div class="container" id="login-forms">		
 	<form method="post" action="/users/login">
+		<div class="form-group text-xs-center">
+			<img src="images/logo.png" class="logo" align="center"/>
+		</div>
 		<div class="form-group">
 			<label>User</label>
 			<input type="text" class="form-control" name="userName" placeholder="User" required/>
@@ -8,12 +11,21 @@
 			<label>Password</label>
 			<input type="password" class="form-control" name="password" placeholder="Password" required/>
 		</div>
-
+		
+		{{#if error}}
+			<div class="form-group alert alert-danger">				
+				<strong>Error:</strong> {{error}}							
+			</div>
+		{{/if}}
 		<div class="form-group">
+			<span><input type="checkbox" valeu="true" name="rememberMe" /> Remember Me</span>
+		</div>
+
+		<div class="form-group">			  
 			<button class="btn btn-primary">
 				Login
 			</button>
-			<a href="users/create">Don't have an account? Sign Up here</a>
+			Don't have an account? <a href="users/create">Create here</a>
 		</div>
 	</form>
 

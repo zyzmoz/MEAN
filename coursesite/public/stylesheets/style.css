@@ -3,6 +3,19 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 80px;
+}
+
+#login-forms{
+	width: 350px;
+}
+
 a {
   color: #00B7FF;
 }
